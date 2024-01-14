@@ -56,11 +56,16 @@ def final_hand(hand,house):
 
 def sum_cards(hand):
   values = []
+  sum_hand = 0
+  ace_present = 0
   for card in hand:
-    sum_hand = 0
     values.append(cards_values[card])
+    if card[0] == 'A':
+      ace_present += 1
   for value in values:
     sum_hand += value
+  if ace_present > 0 and sum_hand > 21:
+    sum_hand -= 10*ace_present
   return sum_hand
   
 def blackjack():
